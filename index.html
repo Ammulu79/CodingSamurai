@@ -3,40 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>To-Do App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" class="calculator-screen" value="" disabled />
-        
-        <div class="calculator-keys">
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">−</button>
-            <button type="button" class="operator" value="*">×</button>
-            <button type="button" class="operator" value="/">÷</button>
-
-            <button type="button" value="7">7</button>
-            <button type="button" value="8">8</button>
-            <button type="button" value="9">9</button>
-
-            <button type="button" value="4">4</button>
-            <button type="button" value="5">5</button>
-            <button type="button" value="6">6</button>
-
-            <button type="button" value="1">1</button>
-            <button type="button" value="2">2</button>
-            <button type="button" value="3">3</button>
-
-            <button type="button" value="0">0</button>
-            <button type="button" value=".">.</button>
-            <button type="button" class="delete" value="delete">DEL</button>
-            <button type="button" class="all-clear" value="all-clear">AC</button>
-
-            <button type="button" class="equal-sign operator" value="=">=</button>
-        </div>
+    <div id="app">
+        <h1>To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter task" required>
+            <input type="datetime-local" id="task-date" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list"></ul>
     </div>
+    <script>
+        fetch('/tasks', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: taskInput.value, date: taskDate.value, completed: false })
+});
 
-    <script src="script.js"></script>
+    </script>
+    <script src="timer.js"></script>
 </body>
 </html>
